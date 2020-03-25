@@ -1,32 +1,38 @@
 package cn.com.dnt.feign.pds;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Domain {
-    private String domain_name;
-    private String domain_info;
+
+    @JsonProperty("new_domain_name")
+    @JSONField(name="new_domain_name")
+    private String domainName;
+    @JsonProperty("domain_info")
+    @JSONField(name="domain_info")
+    private String domainInfo;
 
     public Domain() {
     }
 
-    public Domain(String domain_name, String domain_info) {
-        this.domain_name = domain_name;
-        this.domain_info = domain_info;
+    public Domain(String domainName, String domainInfo) {
+        this.domainName = domainName;
+        this.domainInfo = domainInfo;
     }
 
-    public String getDomain_name() {
-        return domain_name;
+    public String getDomainName() {
+        return domainName;
     }
 
-    public void setDomain_name(String domain_name) {
-        this.domain_name = domain_name;
+    public void setDomainName(String domainName) {
+        this.domainName = domainName;
     }
 
-    public String getDomain_info() {
-        return domain_info;
+    public String getDomainInfo() {
+        return domainInfo;
     }
 
-    public void setDomain_info(String domain_info) {
-        this.domain_info = domain_info;
+    public void setDomainInfo(String domainInfo) {
+        this.domainInfo = domainInfo;
     }
 }

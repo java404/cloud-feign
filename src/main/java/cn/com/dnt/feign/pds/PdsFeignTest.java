@@ -2,11 +2,9 @@ package cn.com.dnt.feign.pds;
 
 import cn.com.dnt.feign.config.FeignClientConfig;
 import cn.com.dnt.feign.config.FeignOkHttpConfig;
+import com.alibaba.fastjson.JSONObject;
 import feign.Feign;
-import feign.gson.GsonDecoder;
-import feign.gson.GsonEncoder;
 import feign.okhttp.OkHttpClient;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -65,7 +63,9 @@ public class PdsFeignTest {
 				.client(new OkHttpClient(FeignOkHttpConfig.okHttpClient()))
 				.requestInterceptor(new ForwardedForInterceptor(auth))
 				.target(PdsFeign.class, FeignClientConfig.pds);
-		final String result = target.update("333","{\"new_domain_name\": \"555\", \"domain_info\": \"555\"}");
+		Domain domain = new Domain("123456", "ffd");
+		String s = JSONObject.toJSONString(domain);
+		final String result = target.update("555",s);
 		System.out.println(result);
 	}
 
